@@ -6,7 +6,7 @@ import "fmt"
 // which is a slice of strings
 type deck []string
 
-// d is a reciever on a function and is similar to 'this' or 'self'
+// d is a receiver on a function and is similar to 'this' or 'self'
 // Basically - any variable of type "deck"
 //		now gets access to the "print" method
 //

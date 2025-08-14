@@ -3,22 +3,20 @@ package main
 import "fmt"
 
 func main() {
-	card := newCard()
+	cards := []string{"Ace of Diamonds", newCard()}
 
-	fmt.Println(card)
+	// Important Note:
+	// takes the cards slice, add a new string to end - append() does not modify existing slice,
+	// instead it returns a new slice assigned to the variable cards
+	cards = append(cards, "Six of Hearts")
+
+	// How to iterate over cards:
+	for i, card := range cards {
+		fmt.Println(i, card)
+	}
+
 }
 
-// String example:
 func newCard() string {
 	return "Ace of Spades"
 }
-
-// Float example:
-// func newCard() float64 {
-// 	return 3.14
-// }
-
-// Integer example:
-// func newCard() int {
-// 	return 314
-// }

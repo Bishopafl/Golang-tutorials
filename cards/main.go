@@ -1,8 +1,8 @@
 package main
 
-import "fmt"
-
 func main() {
+
+	// Because cards is of type deck - we can call the print() method on it.
 	cards := deck{"Ace of Diamonds", newCard()}
 
 	// Important Note:
@@ -10,10 +10,7 @@ func main() {
 	// instead it returns a new slice assigned to the variable cards
 	cards = append(cards, "Six of Hearts")
 
-	// How to iterate over cards:
-	for i, card := range cards {
-		fmt.Println(i, card)
-	}
+	cards.print()
 
 }
 

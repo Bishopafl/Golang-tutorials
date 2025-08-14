@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 func main() {
-	cards := []string{"Ace of Diamonds", newCard()}
+	cards := deck{"Ace of Diamonds", newCard()}
 
 	// Important Note:
 	// takes the cards slice, add a new string to end - append() does not modify existing slice,

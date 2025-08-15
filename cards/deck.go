@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 	"strings"
 )
 
@@ -51,4 +52,8 @@ func deal(d deck, handSize int) (deck, deck) {
 func (d deck) toString() string {
 	// takes a slice of string, joins it and removes the comma in the slice
 	return strings.Join([]string(d), ",")
+}
+
+func (d deck) saveToFile(filename string) error {
+	return os.WriteFile(filename, []byte(d.toString()), 0666)
 }

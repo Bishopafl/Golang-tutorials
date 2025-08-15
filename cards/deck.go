@@ -54,6 +54,27 @@ func (d deck) toString() string {
 	return strings.Join([]string(d), ",")
 }
 
+// save a string to a file on local machine
 func (d deck) saveToFile(filename string) error {
 	return os.WriteFile(filename, []byte(d.toString()), 0666)
+}
+
+// obtain a new deck from a file
+func newDeckFromFile(filename string) deck {
+	// err is value of type 'error' - if nothing went wrong, value = nil
+	bs, err := os.ReadFile(filename)
+
+	// check if err is nul
+	if err != nil {
+		// Option #2 - log error and entirely quit program
+		fmt.Println("Error reading file:", err)
+		os.Exit(1)
+	}
+
+	// string(bs) // Ace of Spades,Two of Spades,Three of Spades,...
+
+	s := strings.Split(string(bs), ",")
+
+	return deck(s) // want to get a deck, passing in the strings
+
 }

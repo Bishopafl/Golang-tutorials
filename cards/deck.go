@@ -2,8 +2,10 @@ package main
 
 import (
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
+	"time"
 )
 
 // Create a new type of 'deck'
@@ -77,4 +79,19 @@ func newDeckFromFile(filename string) deck {
 
 	return deck(s) // want to get a deck, passing in the strings
 
+}
+
+// take the deck passed and randomize it
+func (d deck) shuffle() {
+	// pass the time object as a type for the source
+	// this ensures that the number generated for randomization is 'now'
+	// and will since we are using UnixNano - it will return a type int64
+	source := rand.NewSource(time.Now().UnixNano()) // use as the source object as the basis for the random number generator
+	r := rand.New(source)                           // assign 'r' the random number that was generated based on the NewSource() from the rand library
+	for i := range d {
+		newPosition := r.Intn(len(d) - 1) // get the random number based on one less of the length of the slice
+
+		// swapping the position of i and new position of the card
+		d[i], d[newPosition] = d[newPosition], d[i]
+	}
 }

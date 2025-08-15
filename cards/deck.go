@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 // Create a new type of 'deck'
 // which is a slice of strings
@@ -27,7 +30,9 @@ func newDeck() deck {
 
 // d is a receiver on a function and is similar to 'this' or 'self'
 // Basically - any variable of type "deck"
-//		now gets access to the "print" method
+//
+//	now gets access to the "print" method
+//
 // this prints to the line the deck type
 func (d deck) print() {
 	for i, card := range d {
@@ -39,4 +44,11 @@ func (d deck) print() {
 // two separate return values in return.
 func deal(d deck, handSize int) (deck, deck) {
 	return d[:handSize], d[handSize:]
+}
+
+// Turn deck into a string
+// Need another library to perform this
+func (d deck) toString() string {
+	// takes a slice of string, joins it and removes the comma in the slice
+	return strings.Join([]string(d), ",")
 }

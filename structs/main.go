@@ -15,8 +15,20 @@ func main() {
 	// first and last values are assumed in Go
 	// that they follow the struct built on the
 	// order of the fields.
-	peter := person{"Peter", "Parker"}
+
+	/*
+		Two ways to declare a new struct in Go
+	*/
+	// first way:
+	// peter := person{"Peter", "Parker"}
+
+	// second way:
+	var peter person // one way to declare a new struct in go
+	peter.firstName = "Peter"
+	peter.lastName = "Parker"
+
 	fmt.Println(peter)
+	fmt.Printf("%+v", peter)
 }
 
 // 2. create a new value of type person

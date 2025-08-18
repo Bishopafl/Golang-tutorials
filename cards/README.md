@@ -1,6 +1,13 @@
 # Deck of Cards using Go
 
-Creating a simple card shuffler in Go to learn more about it. So far, I have identified methods that will be needed and what those methods will do. 
+Creating a simple card shuffler in Go to learn more about it. So far, I have identified methods that will be needed and what those methods will do.
+
+## Go Packages used
+	- "fmt"
+	- "math/rand"
+	- "os"
+	- "strings"
+	- "time"
 
 ## Custom Methods
 

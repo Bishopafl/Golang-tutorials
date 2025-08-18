@@ -2,33 +2,42 @@ package main
 
 import "fmt"
 
-// 1. tell go what fields the person struct has
-// 		- custom type for our project
+// 1. tell Go what structs we will use
 
+// ContactInfo struct
+type contactInfo struct {
+	email   string
+	zipCode int
+}
+
+// person struct
 type person struct {
-	firstName string
-	lastName  string
+	firstName   string
+	lastName    string
+	contactInfo // can take a custom type and use it in another custom type! Don't need to specify the field name - just the struct name
 }
 
 func main() {
-	// every person has a first name and last name
-	// first and last values are assumed in Go
-	// that they follow the struct built on the
-	// order of the fields.
+	adam := person{
+		firstName: "Adam", // NOTE: the only time a comma is used!!
+		lastName:  "Lopez",
+		contactInfo: contactInfo{ // embedded structs for reuse.
+			zipCode: 33579,
+			email:   "adam@test.com", // NOTE: all lines - even the last require commas!!
+		},
+	}
 
-	/*
-		Two ways to declare a new struct in Go
-	*/
-	// first way:
-	// peter := person{"Peter", "Parker"}
-
-	// second way:
-	var peter person // one way to declare a new struct in go
-	peter.firstName = "Peter"
-	peter.lastName = "Parker"
-
-	fmt.Println(peter)
-	fmt.Printf("%+v", peter)
+	adam.updateName("Noah") // did not update
+	adam.print()
 }
 
-// 2. create a new value of type person
+// update the name of the person struct
+func (p person) updateName(newFirstName string) {
+	p.firstName = newFirstName
+}
+
+// print information about the person
+// by taking a person as a receiver
+func (p person) print() {
+	fmt.Printf("%+v", p)
+}

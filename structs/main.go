@@ -27,13 +27,14 @@ func main() {
 		},
 	}
 
-	adam.updateName("Noah") // did not update
+	adamPointer := &adam
+	adamPointer.updateName("Noah")
 	adam.print()
 }
 
 // update the name of the person struct
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
 }
 
 // print information about the person

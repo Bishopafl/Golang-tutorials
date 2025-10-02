@@ -16,5 +16,7 @@ func main() {
 		os.Exit(1)                  // exit
 	}
 
+	// os.Stdout implements the Writer interface
+	// second param resp.Body implements the Reader interface
 	io.Copy(os.Stdout, resp.Body)
 }

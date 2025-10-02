@@ -72,3 +72,5 @@ func main() {
     - Interfaces should be small and focused.
     - Prefer many small interfaces over one large one.
     - Example: io.Reader, io.Writer — both define a single method.
+4. You can refer to other interfaces within other interfaces
+	- Interfaces can refer to others in a main.go file

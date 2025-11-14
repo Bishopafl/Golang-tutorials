@@ -61,3 +61,12 @@ Schedule runs one thread one each "logical" core - but by default Go tries to us
 Concurrency - We can have multiple threads executing code. If one thread blocks, another one is picked up and worked on.
 
 Parallelism - Multiple threads executed at the exact same time to the nanosecond. Requires multiple CPU's.
+
+## Channels
+
+Channels communicate between Go Routines and routines can only be done between the routines.
+Created the same way we create other ‘values’ in Go.
+These are typed and the data between them must be the same type
+
+
+Go will throw errors if you put bool values within a channel that expects a string or int.

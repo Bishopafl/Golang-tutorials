@@ -19,7 +19,10 @@ func main() {
 	// when ignoring the 'key' and only wanting the value,
 	// put an underscore where the key should be
 	for _, link := range links {
-		checkLink(link)
+		// the `go` keyword creates a 'Go Routine' inside of our program - think of it that runs code line by line
+		// **ALWAYS DO THIS BEFORE A FUNCTION**
+		go checkLink(link)
+
 	}
 
 }

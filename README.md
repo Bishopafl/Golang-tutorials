@@ -1,7 +1,3 @@
-Here’s a polished **README.md** you can use for your Golang tutorials repository — it gives visitors a clear idea of what the repo is for, how it’s structured, and what each folder represents:
-
----
-
 ````markdown
 # Golang Tutorials
 

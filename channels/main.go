@@ -16,19 +16,23 @@ func main() {
 		"http://adamlopez.com",
 	}
 
+	// Channel setup!
+	// 	Treat this value like any other value in the application
+	c := make(chan string)
+
 	// when ignoring the 'key' and only wanting the value,
 	// put an underscore where the key should be
 	for _, link := range links {
 		// the `go` keyword creates a 'Go Routine' inside of our program - think of it that runs code line by line
 		// **ALWAYS DO THIS BEFORE A FUNCTION**
-		go checkLink(link)
+		go checkLink(link, c)
 
 	}
 
 }
 
 // takes a link and checks
-func checkLink(link string) {
+func checkLink(link string, c chan string) {
 	_, err := http.Get(link)
 	// means something is wrong with the link
 	if err != nil {

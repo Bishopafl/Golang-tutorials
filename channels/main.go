@@ -29,14 +29,9 @@ func main() {
 
 	}
 
-	// C inspired for loop
-	// still waiting for a message to come through the channel until the next iteration of the loop occurs
-
-	// Might look a little hackish - but many methods in Go take this approach
-	for {
-		// INFINITE LOOP!
-		// will resolve when there are no more values to receive through the channel
-		go checkLink(<-c, c) // receieve of the value through the channel
+	// lets clean it up
+	for l := range c {
+		go checkLink(l, c)
 	}
 
 }

@@ -30,7 +30,17 @@ func main() {
 	}
 
 	// the arrow acts to receive the value from the channel
+	// this routine is put to sleep
+	// ** Receiving messages from the Routine is blocking and does not continue. See slide #30
+
+	// This prints each link message but is messy and unclean... will resolve shortly.
 	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c)
+	fmt.Println(<-c) // this makes our program hang because there isn't a seventh link...
 }
 
 // takes a link and checks

@@ -29,6 +29,8 @@ func main() {
 
 	}
 
+	// the arrow acts to receive the value from the channel
+	fmt.Println(<-c)
 }
 
 // takes a link and checks
@@ -37,8 +39,11 @@ func checkLink(link string, c chan string) {
 	// means something is wrong with the link
 	if err != nil {
 		fmt.Println(link, "might be down!")
+		// send the information up to the channel to communicate to our main routine
+		c <- "Might be down... I think"
 		return
 	}
 	fmt.Println(link, "is up!")
+	c <- "Yeah, it's up"
 
 }

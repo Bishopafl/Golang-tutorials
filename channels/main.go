@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -30,8 +31,22 @@ func main() {
 	}
 
 	// lets clean it up
+	// when we receive a message through channel c
+	// the new value is assigned to 'l'
+	//
+	// we pass 'l' to the function literal
+	// that string is copied in memory
+	// then the Go Routine has access to the copy
+	// as opposed to the original value of 'l'
+	//
+	// 'l' can change as much as it pleases, we don't have to worry about Go routine accessing that same address in memory.
 	for l := range c {
-		go checkLink(l, c)
+		// we are going to put a function literal here
+		// to make sure that we are only pausing the function after the routines return a value
+		go func(link string) {
+			time.Sleep(5 * time.Second)
+			checkLink(link, c)
+		}(l) // NEED TO HAVE AN EXTRA SET OF PARATHESIS TO ENVOKE THE FUNCTION LITERAL
 	}
 
 }

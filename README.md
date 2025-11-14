@@ -1,4 +1,3 @@
-````markdown
 # Golang Tutorials
 
 Welcome to my collection of **Go (Golang)** learning exercises and mini-projects! 🧠💻  
@@ -10,7 +9,7 @@ The goal is simple: **learn by building**, and share that learning process openl
 ---
 
 ## 📂 Repository Structure
-
+````markdown
 | Folder | Description |
 |--------|--------------|
 | **cards/** | A simple program that demonstrates working with slices, loops, and randomization — building a basic card deck app in Go. |
@@ -24,7 +23,7 @@ The goal is simple: **learn by building**, and share that learning process openl
 | **shapes/** | Object-oriented style Go tutorial demonstrating interfaces and struct implementations for geometric shapes (e.g., `square`, `triangle`). |
 | **structs/** | Explores Go structs, pointers, and receiver functions — focusing on updating data inside structs through methods. |
 | **tests/** | Basic Go test examples following Go’s built-in testing package. Used to test logic from various exercises (e.g., quiz app challenges). |
-
+````
 ---
 
 ## 🧩 Goals

@@ -14,6 +14,35 @@ The program loops through each link and checks if they are operational and throw
 
 using the `go` keyword it will iteratively run a go routine will only run the checkLink() method that was retrieved.
 
+---
+
+Application architecture will automatically ping the websites after the routine is run for each child routine
+
+Program starts                                                                  Time
+|--------------------------------------------------------------------------------->
+| ------------------------ ------------------------ ------------------------ 
+| |  google.com routine | |  google.com routine   | | google.com routine   |---->
+| ------------------------ ------------------------ ------------------------
+|
+| ------------------------------------------ ------------------------------ 
+| |         stackoverflow.com routine      | |  stackoverflow.com routine |---->
+| ------------------------------------------ ------------------------------
+|
+| ------------------------------------- ------------------------------ 
+| |         facebook.com routine      | |  facebook.com routine      |---->
+| ------------------------------------- ------------------------------
+
+
+
+
+
+
+
+
+
+
+---
+
 Behind the scenes:
 
 go is going to use one CPU core and only one Go Routine will run at one time. The Go Scheduler is the manager of the routines and will execute them via the Go Scheduler.
@@ -70,3 +99,4 @@ These are typed and the data between them must be the same type
 
 
 Go will throw errors if you put bool values within a channel that expects a string or int.
+

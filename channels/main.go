@@ -29,18 +29,16 @@ func main() {
 
 	}
 
-	// the arrow acts to receive the value from the channel
-	// this routine is put to sleep
-	// ** Receiving messages from the Routine is blocking and does not continue. See slide #30
+	// C inspired for loop
+	// still waiting for a message to come through the channel until the next iteration of the loop occurs
 
-	// This prints each link message but is messy and unclean... will resolve shortly.
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c)
-	fmt.Println(<-c) // this makes our program hang because there isn't a seventh link...
+	// Might look a little hackish - but many methods in Go take this approach
+	for {
+		// INFINITE LOOP!
+		// will resolve when there are no more values to receive through the channel
+		go checkLink(<-c, c) // receieve of the value through the channel
+	}
+
 }
 
 // takes a link and checks
@@ -50,10 +48,10 @@ func checkLink(link string, c chan string) {
 	if err != nil {
 		fmt.Println(link, "might be down!")
 		// send the information up to the channel to communicate to our main routine
-		c <- "Might be down... I think"
+		c <- link // rather than pushing a fixed string, we will pass the link or URL
 		return
 	}
 	fmt.Println(link, "is up!")
-	c <- "Yeah, it's up"
+	c <- link // rather than pushing a fixed string, we will pass the link or URL
 
 }
